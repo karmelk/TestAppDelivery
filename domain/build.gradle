@@ -1,4 +1,4 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
@@ -7,12 +7,13 @@ android {
     buildToolsVersion buildVersion
 
     defaultConfig {
-        applicationId "com.kmwork.testappdelivery"
         minSdkVersion minVersion
         targetSdkVersion targetVersion
         versionCode appVersionCode
         versionName appVersionName
+
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
@@ -21,7 +22,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-
     compileOptions {
         sourceCompatibility = 1.8
         targetCompatibility = 1.8
@@ -32,19 +32,13 @@ dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation project(path: ':entities')
     implementation project(path: ':data')
-    implementation project(path: ':domain')
-    implementation supportDependencies.appcompat
     implementation supportDependencies.kotlin
+    implementation supportDependencies.appcompat
     implementation supportDependencies.coreKtx
-    implementation supportDependencies.junit
-    implementation supportDependencies.junitAndroid
-    implementation supportDependencies.espressoCore
-    implementation supportDependencies.constraintlayout
-    implementation supportDependencies.lifecycle
-    implementation supportDependencies.lifecycleViewmodel
     implementation supportDependencies.koinAndroid
-    implementation supportDependencies.koinViewModel
     implementation supportDependencies.coroutines
-    implementation supportDependencies.coroutinesAndroid
-    implementation supportDependencies.cardView
+    testImplementation supportDependencies.junit
+    androidTestImplementation  supportDependencies.junitAndroid
+    androidTestImplementation supportDependencies.espressoCore
+
 }
