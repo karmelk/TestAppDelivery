@@ -6,10 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.google.android.material.tabs.TabLayout
-import com.google.android.material.tabs.TabLayoutMediator
-import com.google.android.material.tabs.TabLayoutMediator.TabConfigurationStrategy
 import com.kmwork.testappdelivery.R
-import com.kmwork.testappdelivery.fragment.home.adapters.HomeViewPager
+import com.kmwork.testappdelivery.changeFragment
+import com.kmwork.testappdelivery.fragment.marksmap.MarkersMapFragment
+import com.kmwork.testappdelivery.fragment.stops.StopsFragment
 import kotlinx.android.synthetic.main.fragment_home.*
 
 
@@ -19,27 +19,49 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val tabTitles = arrayOf(
-            resources.getString(R.string.stops),
-            resources.getString(R.string.maps)
-        )
-        activity?.let {
-            val homeViewPager= HomeViewPager(it)
-            viewPager.adapter=homeViewPager
-            TabLayoutMediator(
-                tabLayout, viewPager,
-                TabConfigurationStrategy { tab: TabLayout.Tab, position: Int ->
-                    tab.text = tabTitles[position]
-                }
-            ).attach()
-        }
+        setupView()
+    }
 
+    private fun setupView() {
+        activity?.let {
+            val fragment = StopsFragment()
+            changeFragment(it, fragment)
+            tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+                override fun onTabReselected(tab: TabLayout.Tab?) {
+
+                }
+
+                override fun onTabUnselected(tab: TabLayout.Tab?) {
+
+                }
+
+                override fun onTabSelected(tab: TabLayout.Tab?) {
+                    tab?.apply {
+                        when (position) {
+                            0 -> {
+                                val stopsFragment = StopsFragment()
+                                changeFragment(
+                                    it,
+                                    stopsFragment
+                                )
+                            }
+                            1 -> {
+                                val markersMapFragment = MarkersMapFragment()
+                                changeFragment(
+                                    it,
+                                    markersMapFragment
+                                )
+                            }
+                        }
+                    }
+                }
+            })
+        }
     }
 
     companion object {

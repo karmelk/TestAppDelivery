@@ -1,0 +1,24 @@
+<resources>
+    <!--
+    TODO: Before you run your application, you need a Google Maps API key.
+
+    To get one, follow this link, follow the directions and press "Create" at the end:
+
+    https://console.developers.google.com/flows/enableapi?apiid=maps_android_backend&keyType=CLIENT_SIDE_ANDROID&r=9E:8E:86:DC:93:9B:4D:4F:C1:5E:15:03:48:29:5A:24:30:F5:A3:B1%3Bcom.kmwork.testappdelivery.fragment.marksmap
+
+    You can also add your credentials to an existing key, using these values:
+
+    Package name:
+    com.kmwork.testappdelivery.fragment.marksmap
+
+    SHA-1 certificate fingerprint:
+    9E:8E:86:DC:93:9B:4D:4F:C1:5E:15:03:48:29:5A:24:30:F5:A3:B1
+
+    Alternatively, follow the directions here:
+    https://developers.google.com/maps/documentation/android/start#get-key
+
+    Once you have your key (it starts with "AIza"), replace the "google_maps_key"
+    string in this file.
+    -->
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyDWTs72nQmGB1su4P1X8bO_v2aG1ZztW1o</string>
+</resources>

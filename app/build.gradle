@@ -50,4 +50,5 @@ dependencies {
     implementation supportDependencies.androidMaterial
     implementation supportDependencies.viewpager2
     implementation supportDependencies.legacySupport
+    implementation 'com.google.android.gms:play-services-maps:17.0.0'
 }
