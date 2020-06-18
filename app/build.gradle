@@ -47,4 +47,7 @@ dependencies {
     implementation supportDependencies.coroutines
     implementation supportDependencies.coroutinesAndroid
     implementation supportDependencies.cardView
+    implementation supportDependencies.androidMaterial
+    implementation supportDependencies.viewpager2
+    implementation supportDependencies.legacySupport
 }

@@ -23,7 +23,9 @@ ext {
     roomVersion = '2.2.2'
     roomVersion = '2.2.2'
     versionCardView = '28.0.0'
-
+    legacySupportVersion = '1.0.0'
+    viewpager2 = '1.1.0-alpha01'
+    material = '1.3.0-alpha01'
     supportDependencies = [
             appcompat         : "androidx.appcompat:appcompat:${appcompat}",
             kotlin            : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${kotlinVersion}",
@@ -42,5 +44,9 @@ ext {
             roomRuntime       : "androidx.room:room-runtime:${roomVersion}",
             roomCompiler      : "androidx.room:room-compiler:${roomVersion}",
             cardView          : "com.android.support:cardview-v7:${versionCardView}",
+            legacySupport     : "androidx.legacy:legacy-support-v4:${legacySupportVersion}",
+            androidMaterial   : "com.google.android.material:material:${material}",
+            viewpager2        : "androidx.viewpager2:viewpager2:${viewpager2}",
+
     ]
 }
