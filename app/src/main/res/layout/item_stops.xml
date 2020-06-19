@@ -1,6 +1,156 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/step_card_view_margin"
+        app:cardBackgroundColor="@color/colorBackgroundItemStopUnselected"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/finishedStop"
+                android:layout_width="@dimen/step_item_finish_size"
+                android:layout_height="@dimen/step_item_finish_size"
+                android:layout_marginStart="@dimen/step_item_position_margin"
+                android:layout_marginTop="@dimen/step_item_position_margin_top"
+                android:background="@drawable/step_item_finished"
+                android:padding="@dimen/step_item_finish_padding"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_baseline_check_24" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/position"
+                android:layout_width="@dimen/step_item_finish_size"
+                android:layout_height="@dimen/step_item_finish_size"
+                android:layout_marginStart="@dimen/step_item_position_margin"
+                android:layout_marginTop="@dimen/step_item_position_margin_top"
+                android:background="@drawable/step_item_selected"
+                android:gravity="center"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/step_item_position_size"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="0" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/stopInfo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/step_item_container_info_margin"
+                android:layout_marginTop="@dimen/step_item_container_info_margin_top"
+                android:layout_marginEnd="@dimen/step_item_container_info_margin"
+                android:layout_marginBottom="@dimen/step_item_stops_info_margin"
+                app:layout_constraintBottom_toBottomOf="@+id/line"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/finishedStop"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/stopName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorItemStopName"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="5111111" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/startAddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/step_item_line_margin"
+                    android:textColor="@color/colorItemStopText"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/stopName"
+                    tools:text="Johan Huizingalan 186" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/finishAddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/step_item_line_margin"
+                    android:textColor="@color/colorItemStopText"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/startAddress"
+                    tools:text="1065 JJ Amsterdam" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorItemStopDateNotPassed"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="10:12" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/finishDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorItemStopText"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/finishAddress"
+                    tools:text="9:00-10:00" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <View
+                android:id="@+id/line"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/step_item_line_size"
+                android:layout_marginTop="@dimen/step_item_line_margin"
+                android:background="@color/colorItemStopLine"
+                android:visibility="invisible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/stopInfo"
+                app:layout_constraintTop_toBottomOf="@+id/stopInfo" />
+
+            <LinearLayout
+                android:id="@+id/eventButtonContainer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/step_item_container_button_margin"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/line">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/navigate"
+                    style="@style/Base.Widget.AppCompat.Button.Borderless.Colored"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorAccent"
+                    android:drawableTop="@drawable/ic_navigation_24"
+                    android:text="@string/navigate"
+                    android:textColor="@color/colorItemStopFinishedButton"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/accept"
+                    app:layout_constraintTop_toBottomOf="@+id/message_text" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/finish"
+                    style="@style/Base.Widget.AppCompat.Button.Borderless.Colored"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorAccent"
+                    android:drawableTop="@drawable/ic_finish_check_24"
+                    android:text="@string/finish"
+                    android:textColor="@color/colorItemStopFinishedButton"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/accept"
+                    app:layout_constraintTop_toBottomOf="@+id/message_text" />
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

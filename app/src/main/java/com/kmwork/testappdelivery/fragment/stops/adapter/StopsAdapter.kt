@@ -27,4 +27,11 @@ class StopsAdapter(val navigate: () -> Unit, val finish: () -> Unit) :
             }
         }
     }
+
+    fun updateList(it: MutableList<StopsModelDB>?) {
+        it?.run {
+            itemList = this
+            notifyDataSetChanged()
+        }
+    }
 }
