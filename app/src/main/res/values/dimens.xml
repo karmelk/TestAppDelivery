@@ -3,7 +3,7 @@
     <dimen name="step_item_finish_size">50dp</dimen>
     <dimen name="step_item_position_size">18sp</dimen>
     <dimen name="step_item_position_margin">15dp</dimen>
-    <dimen name="step_item_position_margin_top">18dp</dimen>
+
     <dimen name="step_item_finish_padding">10dp</dimen>
     <dimen name="step_card_view_margin">10dp</dimen>
     <dimen name="step_item_stops_info_margin">10dp</dimen>
@@ -13,4 +13,5 @@
     <dimen name="step_item_line_margin">5dp</dimen>
     <dimen name="step_item_text_margin">5dp</dimen>
     <dimen name="step_item_line_size">1dp</dimen>
+    <dimen name="step_item_address_margin">8dp</dimen>
 </resources>

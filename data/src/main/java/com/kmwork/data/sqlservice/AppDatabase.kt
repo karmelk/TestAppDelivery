@@ -2,7 +2,7 @@ package com.kmwork.data.sqlservice
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.kmwork.entities.StopsModelDB
+import com.kmwork.entities.responcemodel.StopsModelDB
 
 @Database(
     entities = [StopsModelDB::class],

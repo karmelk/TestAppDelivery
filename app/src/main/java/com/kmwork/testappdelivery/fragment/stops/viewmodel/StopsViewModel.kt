@@ -6,14 +6,15 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.kmwork.domain.interactor.StopsInteractor
 import com.kmwork.entities.Result
-import com.kmwork.entities.StopsModelDB
+import com.kmwork.entities.localmodel.StopsModel
+import com.kmwork.entities.responcemodel.StopsModelDB
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class StopsViewModel(private val stopInteractor: StopsInteractor) : ViewModel() {
-    private val _getStopsDataLD by lazy { MutableLiveData<MutableList<StopsModelDB>>() }
-    val getStopsDataLD: LiveData<MutableList<StopsModelDB>> get() = _getStopsDataLD
+    private val _getStopsDataLD by lazy { MutableLiveData<MutableList<StopsModel>>() }
+    val getStopsDataLD: LiveData<MutableList<StopsModel>> get() = _getStopsDataLD
 
     init {
         getStopData()

@@ -5,5 +5,5 @@ import com.kmwork.domain.usecase.StopsUseCase
 import org.koin.dsl.module
 
 val interactorModule = module {
-    single<StopsInteractor>{StopsUseCase(get())}
+    factory <StopsInteractor>{StopsUseCase(get())}
 }

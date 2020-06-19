@@ -2,10 +2,12 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:animateLayoutChanges="true"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/itemCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/step_card_view_margin"
@@ -22,11 +24,12 @@
                 android:layout_width="@dimen/step_item_finish_size"
                 android:layout_height="@dimen/step_item_finish_size"
                 android:layout_marginStart="@dimen/step_item_position_margin"
-                android:layout_marginTop="@dimen/step_item_position_margin_top"
-                android:background="@drawable/step_item_finished"
+
+                android:background="@drawable/step_item_position_finished_state"
                 android:padding="@dimen/step_item_finish_padding"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="@+id/stopInfo"
+                app:layout_constraintTop_toTopOf="@+id/stopInfo"
                 app:srcCompat="@drawable/ic_baseline_check_24" />
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -34,13 +37,13 @@
                 android:layout_width="@dimen/step_item_finish_size"
                 android:layout_height="@dimen/step_item_finish_size"
                 android:layout_marginStart="@dimen/step_item_position_margin"
-                android:layout_marginTop="@dimen/step_item_position_margin_top"
-                android:background="@drawable/step_item_selected"
+                android:background="@drawable/step_item_position_unselected_state"
                 android:gravity="center"
                 android:textColor="@color/colorAccent"
                 android:textSize="@dimen/step_item_position_size"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="@+id/stopInfo"
+                app:layout_constraintTop_toTopOf="@+id/stopInfo"
                 tools:text="0" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -65,28 +68,21 @@
                     app:layout_constraintTop_toTopOf="parent"
                     tools:text="5111111" />
 
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/startAddress"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/step_item_line_margin"
-                    android:textColor="@color/colorItemStopText"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/stopName"
-                    tools:text="Johan Huizingalan 186" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/finishAddress"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/step_item_line_margin"
+                    android:layout_marginEnd="@dimen/step_item_address_margin"
                     android:textColor="@color/colorItemStopText"
+                    app:layout_constraintEnd_toStartOf="@+id/date"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/startAddress"
-                    tools:text="1065 JJ Amsterdam" />
+                    app:layout_constraintTop_toBottomOf="@+id/stopName"
+                    tools:text="Yerevan Sayat-Nova 168/2" />
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/date"
+                    android:id="@+id/finishedDate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/colorItemStopDateNotPassed"
@@ -95,7 +91,7 @@
                     tools:text="10:12" />
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/finishDate"
+                    android:id="@+id/date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/colorItemStopText"
@@ -125,11 +121,11 @@
                 app:layout_constraintTop_toBottomOf="@+id/line">
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/navigate"
+                    android:id="@+id/btnNavigate"
                     style="@style/Base.Widget.AppCompat.Button.Borderless.Colored"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@color/colorAccent"
+
                     android:drawableTop="@drawable/ic_navigation_24"
                     android:text="@string/navigate"
                     android:textColor="@color/colorItemStopFinishedButton"
@@ -138,11 +134,11 @@
                     app:layout_constraintTop_toBottomOf="@+id/message_text" />
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/finish"
+                    android:id="@+id/btnFinish"
                     style="@style/Base.Widget.AppCompat.Button.Borderless.Colored"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@color/colorAccent"
+
                     android:drawableTop="@drawable/ic_finish_check_24"
                     android:text="@string/finish"
                     android:textColor="@color/colorItemStopFinishedButton"

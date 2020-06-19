@@ -9,6 +9,7 @@
     <color name="colorItemStopName">#5a5a5a</color>
     <color name="colorItemStopText">#9b9b9b</color>
     <color name="colorItemStopDateNotPassed">#86c491</color>
+    <color name="colorItemStopDatePassed">#d50000</color>
     <color name="colorItemStopLine">#dedede</color>
     <color name="colorItemStopFinishedButton">#4688f1</color>
     <color name="colorItemStopNavigateButton">#4688f1</color>
