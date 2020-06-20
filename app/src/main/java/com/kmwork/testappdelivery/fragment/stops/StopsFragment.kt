@@ -1,5 +1,7 @@
 package com.kmwork.testappdelivery.fragment.stops
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -33,10 +35,15 @@ class StopsFragment : Fragment() {
     private fun initFragmentView() {
         stopsAdapter = StopsAdapter(
             finish = {
-
+                stopsViewModel.finishItem(it)
             },
-            navigate = {
-
+            navigate = {lat, lon ->
+                context?.apply {
+                    val gmmIntentUri= Uri.parse("google.navigation:q=$lat,$lon")
+                    val mapIntent = Intent(Intent.ACTION_VIEW,gmmIntentUri)
+                    mapIntent.setPackage("com.google.android.apps.maps")
+                    this.startActivity(mapIntent)
+                }
             })
         stopsRv.adapter = stopsAdapter
     }

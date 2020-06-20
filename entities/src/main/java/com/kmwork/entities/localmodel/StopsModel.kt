@@ -2,6 +2,7 @@ package com.kmwork.entities.localmodel
 
 
 data class StopsModel(
+    private val _id: Long,
     private val _randomName: String,
     private val _finishAddress: String,
     private val _addressLat: String,
@@ -10,8 +11,10 @@ data class StopsModel(
     private val _finishedDate: String,
     private var _isDatePenalty: Boolean,
     private var _isFinishedStops: Boolean,
-    private var _isSelected:Boolean
+    private var _isSelected: Boolean
 ) {
+    val id: Long
+        get() = _id
     val randomName: String
         get() = _randomName
     val finishAddress: String

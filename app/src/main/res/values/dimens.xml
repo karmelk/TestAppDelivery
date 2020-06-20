@@ -5,7 +5,7 @@
     <dimen name="step_item_position_margin">15dp</dimen>
 
     <dimen name="step_item_finish_padding">10dp</dimen>
-    <dimen name="step_card_view_margin">10dp</dimen>
+    <dimen name="step_item_view_margin">3dp</dimen>
     <dimen name="step_item_stops_info_margin">10dp</dimen>
     <dimen name="step_item_container_info_margin">15dp</dimen>
     <dimen name="step_item_container_button_margin">5dp</dimen>

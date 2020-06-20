@@ -8,7 +8,6 @@ import com.kmwork.domain.utils.mapLocalStopModel
 import com.kmwork.entities.DeliveryException
 import com.kmwork.entities.Result
 import com.kmwork.entities.localmodel.StopsModel
-import com.kmwork.entities.responcemodel.StopsModelDB
 
 class StopsUseCase(private val stepsRepository: StopsRepository) : StopsInteractor {
     private val stopModelList: MutableList<StopsModel> = mutableListOf()
@@ -34,5 +33,16 @@ class StopsUseCase(private val stepsRepository: StopsRepository) : StopsInteract
             stopModelList.add(item.mapLocalStopModel())
         }
         return stopModelList
+    }
+
+    override suspend fun updateStop(stopId: Long): Result<MutableList<StopsModel>> {
+        stopModelList.find { it.id == stopId }?.apply {
+            isFinishedStops = true
+            stepsRepository.getSingleStopDB(stopId)?.apply {
+                isFinishedStops = true
+                stepsRepository.updateStopItem(this)
+            }
+        }
+        return Result.Success(stopModelList)
     }
 }

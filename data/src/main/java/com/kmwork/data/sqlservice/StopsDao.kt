@@ -1,9 +1,6 @@
 package com.kmwork.data.sqlservice
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import com.kmwork.entities.responcemodel.StopsModelDB
 
 @Dao
@@ -13,4 +10,10 @@ interface StopsDao {
 
     @Query("SELECT * FROM stopsTable")
     fun getStopsList(): MutableList<StopsModelDB>?
+
+    @Query("SELECT * FROM stopsTable where id=:stopId")
+    fun getSingleStopsItem(stopId:Long): StopsModelDB?
+
+    @Update
+    fun updateItem(updateItem:StopsModelDB)
 }

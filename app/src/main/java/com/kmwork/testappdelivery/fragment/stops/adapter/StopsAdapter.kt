@@ -11,7 +11,10 @@ import com.kmwork.entities.responcemodel.StopsModelDB
 import com.kmwork.testappdelivery.R
 import kotlinx.android.synthetic.main.item_stops.view.*
 
-class StopsAdapter(val navigate: () -> Unit, val finish: () -> Unit) :
+class StopsAdapter(
+    val navigate: (lat: String, lon: String) -> Unit,
+    val finish: (itemId: Long) -> Unit
+) :
     RecyclerView.Adapter<StopsAdapter.MyViewHolder>() {
     private var itemList: MutableList<StopsModel> = mutableListOf()
 
@@ -32,7 +35,7 @@ class StopsAdapter(val navigate: () -> Unit, val finish: () -> Unit) :
                 stopName.text = item.randomName
                 finishAddress.text = item.finishAddress
                 finishedDate.text = item.finishedDate
-                date.text=item.expectantDate
+                date.text = item.expectantDate
                 if (item.isFinishedStops) {
                     finishedStop.visibility = VISIBLE
                     position.visibility = INVISIBLE
@@ -40,12 +43,13 @@ class StopsAdapter(val navigate: () -> Unit, val finish: () -> Unit) :
                     finishedDate.visibility = INVISIBLE
                     finishAddress.setTextColor(ContextCompat.getColor(context, R.color.colorAccent))
                     stopName.setTextColor(ContextCompat.getColor(context, R.color.colorAccent))
-                    itemCard.setCardBackgroundColor(
-                        ContextCompat.getColor(
-                            context,
-                            R.color.colorBackgroundItemStopFinished
-                        )
-                    )
+                    itemCard.background = (
+                            ContextCompat.getDrawable(
+                                context,
+                                R.drawable.step_item_finished
+                            ))
+                    eventButtonContainer.visibility = GONE
+                    line.visibility = GONE
                 } else {
                     if (item.isDatePenalty) {
                         finishedDate.setTextColor(
@@ -75,12 +79,11 @@ class StopsAdapter(val navigate: () -> Unit, val finish: () -> Unit) :
                                 R.color.colorItemStopName
                             )
                         )
-                        itemCard.setCardBackgroundColor(
-                            ContextCompat.getColor(
-                                context,
-                                R.color.colorBackgroundItemStopUnselected
-                            )
-                        )
+                        itemCard.background = (
+                                ContextCompat.getDrawable(
+                                    context,
+                                    R.drawable.step_item_unselected
+                                ))
                     }
                 }
                 itemView.setOnClickListener {
@@ -89,12 +92,11 @@ class StopsAdapter(val navigate: () -> Unit, val finish: () -> Unit) :
                             item.isSelected = false
                             eventButtonContainer.visibility = GONE
                             line.visibility = GONE
-                            itemCard.setCardBackgroundColor(
-                                ContextCompat.getColor(
-                                    context,
-                                    R.color.colorBackgroundItemStopUnselected
-                                )
-                            )
+                            itemCard.background = (
+                                    ContextCompat.getDrawable(
+                                        context,
+                                        R.drawable.step_item_unselected
+                                    ))
                             position.background = ContextCompat.getDrawable(
                                 context,
                                 R.drawable.step_item_position_unselected_state
@@ -103,13 +105,11 @@ class StopsAdapter(val navigate: () -> Unit, val finish: () -> Unit) :
                             item.isSelected = true
                             eventButtonContainer.visibility = VISIBLE
                             line.visibility = VISIBLE
-                            line.visibility = VISIBLE
-                            itemCard.setCardBackgroundColor(
-                                ContextCompat.getColor(
-                                    context,
-                                    R.color.colorBackgroundItemStopSelected
-                                )
-                            )
+                            itemCard.background = (
+                                    ContextCompat.getDrawable(
+                                        context,
+                                        R.drawable.step_item_selected
+                                    ))
                             position.background = ContextCompat.getDrawable(
                                 context,
                                 R.drawable.step_item_position_selected_state
@@ -118,6 +118,12 @@ class StopsAdapter(val navigate: () -> Unit, val finish: () -> Unit) :
 
                         }
                     }
+                }
+                btnNavigate.setOnClickListener {
+                    navigate.invoke(item.addressLat, item.addressLon)
+                }
+                btnFinish.setOnClickListener {
+                    finish.invoke(item.id)
                 }
             }
         }
