@@ -5,8 +5,8 @@ data class StopsModel(
     private val _id: Long,
     private val _randomName: String,
     private val _finishAddress: String,
-    private val _addressLat: String,
-    private val _addressLon: String,
+    private val _addressLat: Double,
+    private val _addressLon: Double,
     private val _expectantDate: String,
     private val _finishedDate: String,
     private var _isDatePenalty: Boolean,
@@ -19,9 +19,9 @@ data class StopsModel(
         get() = _randomName
     val finishAddress: String
         get() = _finishAddress
-    val addressLat: String
+    val addressLat: Double
         get() = _addressLat
-    val addressLon: String
+    val addressLon: Double
         get() = _addressLon
     val expectantDate: String
         get() = _expectantDate

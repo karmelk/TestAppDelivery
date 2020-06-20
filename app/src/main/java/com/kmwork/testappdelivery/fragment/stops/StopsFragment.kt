@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import com.kmwork.testappdelivery.R
 import com.kmwork.testappdelivery.fragment.stops.adapter.StopsAdapter
@@ -37,10 +38,10 @@ class StopsFragment : Fragment() {
             finish = {
                 stopsViewModel.finishItem(it)
             },
-            navigate = {lat, lon ->
+            navigate = { lat, lon ->
                 context?.apply {
-                    val gmmIntentUri= Uri.parse("google.navigation:q=$lat,$lon")
-                    val mapIntent = Intent(Intent.ACTION_VIEW,gmmIntentUri)
+                    val gmmIntentUri = Uri.parse("google.navigation:q=$lat,$lon")
+                    val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
                     mapIntent.setPackage("com.google.android.apps.maps")
                     this.startActivity(mapIntent)
                 }
@@ -51,6 +52,9 @@ class StopsFragment : Fragment() {
     private fun initViewModel() {
         stopsViewModel.getStopsDataLD.observe(viewLifecycleOwner, Observer {
             stopsAdapter.updateList(it)
+        })
+        stopsViewModel.errorStopsDataLD.observe(viewLifecycleOwner, Observer {
+            Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
         })
     }
 

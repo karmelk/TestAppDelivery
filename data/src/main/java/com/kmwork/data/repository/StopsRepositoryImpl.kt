@@ -8,10 +8,13 @@ class StopsRepositoryImpl(private val stopDao: StopsDao) : StopsRepository {
     override suspend fun getStopsListDB(): MutableList<StopsModelDB>? =
         stopDao.getStopsList()
 
-    override suspend fun getSingleStopDB(stopId: Long): StopsModelDB? = stopDao.getSingleStopsItem(stopId)
+    override suspend fun getSingleStopDB(stopId: Long): StopsModelDB? =
+        stopDao.getSingleStopsItem(stopId)
 
-    override suspend fun setDefaultData(stopsList: MutableList<StopsModelDB>) =
+    override suspend fun setDefaultData(stopsList: MutableList<StopsModelDB>): MutableList<StopsModelDB>? {
         stopDao.addRandomList(stopsList)
+        return stopDao.getStopsList()
+    }
 
     override suspend fun updateStopItem(stopItem: StopsModelDB) {
         stopDao.updateItem(stopItem)

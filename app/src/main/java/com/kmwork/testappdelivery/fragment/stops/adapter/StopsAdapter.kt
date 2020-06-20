@@ -12,7 +12,7 @@ import com.kmwork.testappdelivery.R
 import kotlinx.android.synthetic.main.item_stops.view.*
 
 class StopsAdapter(
-    val navigate: (lat: String, lon: String) -> Unit,
+    val navigate: (lat: Double, lon: Double) -> Unit,
     val finish: (itemId: Long) -> Unit
 ) :
     RecyclerView.Adapter<StopsAdapter.MyViewHolder>() {
@@ -43,14 +43,17 @@ class StopsAdapter(
                     finishedDate.visibility = INVISIBLE
                     finishAddress.setTextColor(ContextCompat.getColor(context, R.color.colorAccent))
                     stopName.setTextColor(ContextCompat.getColor(context, R.color.colorAccent))
-                    itemCard.background = (
-                            ContextCompat.getDrawable(
-                                context,
-                                R.drawable.step_item_finished
-                            ))
+                    itemCard.background = (ContextCompat.getDrawable(context, R.drawable.step_item_finished))
                     eventButtonContainer.visibility = GONE
                     line.visibility = GONE
                 } else {
+                    itemCard.background = (ContextCompat.getDrawable(context, R.drawable.step_item_unselected))
+                    finishAddress.setTextColor(ContextCompat.getColor(context, R.color.colorItemStopText))
+                    stopName.setTextColor(ContextCompat.getColor(context, R.color.colorItemStopName))
+                    finishedStop.visibility = INVISIBLE
+                    position.visibility = VISIBLE
+                    finishedDate.visibility = VISIBLE
+                    date.visibility = VISIBLE
                     if (item.isDatePenalty) {
                         finishedDate.setTextColor(
                             ContextCompat.getColor(
@@ -65,25 +68,6 @@ class StopsAdapter(
                                 R.color.colorItemStopDateNotPassed
                             )
                         )
-                        finishedStop.visibility = INVISIBLE
-                        position.visibility = VISIBLE
-                        finishAddress.setTextColor(
-                            ContextCompat.getColor(
-                                context,
-                                R.color.colorItemStopText
-                            )
-                        )
-                        stopName.setTextColor(
-                            ContextCompat.getColor(
-                                context,
-                                R.color.colorItemStopName
-                            )
-                        )
-                        itemCard.background = (
-                                ContextCompat.getDrawable(
-                                    context,
-                                    R.drawable.step_item_unselected
-                                ))
                     }
                 }
                 itemView.setOnClickListener {

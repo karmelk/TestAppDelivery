@@ -21,7 +21,6 @@
                 android:layout_width="@dimen/step_item_finish_size"
                 android:layout_height="@dimen/step_item_finish_size"
                 android:layout_marginStart="@dimen/step_item_position_margin"
-
                 android:background="@drawable/step_item_position_finished_state"
                 android:padding="@dimen/step_item_finish_padding"
                 app:layout_constraintStart_toStartOf="parent"
@@ -49,7 +48,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/step_item_container_info_margin"
                 android:layout_marginTop="@dimen/step_item_container_info_margin_top"
-                android:layout_marginEnd="@dimen/step_item_container_info_margin"
+                android:layout_marginEnd="@dimen/step_item_container_info_margin_end"
                 android:layout_marginBottom="@dimen/step_item_stops_info_margin"
                 app:layout_constraintBottom_toBottomOf="@+id/line"
                 app:layout_constraintEnd_toEndOf="parent"

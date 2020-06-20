@@ -13,9 +13,9 @@ data class StopsModelDB(
     @ColumnInfo(name = "finishAddress")
     private val _finishAddress: String,
     @ColumnInfo(name="addressLat")
-    private val _addressLat:String,
+    private val _addressLat:Double,
     @ColumnInfo(name="addressLon")
-    private val _addressLon:String,
+    private val _addressLon:Double,
     @ColumnInfo(name = "expectantDate")
     private val _expectantDate: String,
     @ColumnInfo(name = "finishedDate")
@@ -34,9 +34,9 @@ data class StopsModelDB(
         get() = _randomName
     val finishAddress: String
         get() = _finishAddress
-    val addressLat: String
+    val addressLat: Double
         get() = _addressLat
-    val addressLon: String
+    val addressLon: Double
         get() = _addressLon
     val expectantDate: String
         get() = _expectantDate

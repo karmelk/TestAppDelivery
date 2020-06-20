@@ -48,7 +48,8 @@ dependencies {
     implementation supportDependencies.coroutinesAndroid
     implementation supportDependencies.cardView
     implementation supportDependencies.androidMaterial
-    implementation supportDependencies.viewpager2
     implementation supportDependencies.legacySupport
-    implementation 'com.google.android.gms:play-services-maps:17.0.0'
+    implementation supportDependencies.playServicesMaps
+    implementation supportDependencies.mapsUtils
+
 }
